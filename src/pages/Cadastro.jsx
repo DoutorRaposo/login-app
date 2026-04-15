@@ -14,6 +14,10 @@ function Cadastro() {
   const navigate = useNavigate();
 
   async function cadastrar() {
+    if (!email || !senha || !nome || !sobrenome || !dataNascimento) {
+      setMensagem("Preencha todos os campos!");
+      return;
+    }
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
       const uid = userCredential.user.uid;

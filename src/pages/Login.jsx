@@ -10,6 +10,10 @@ function Login() {
   const navigate = useNavigate();
 
   async function acessar() {
+    if (!email || !senha) {
+      setMensagem("Preencha todos os campos!");
+      return;
+    }
     try {
       await signInWithEmailAndPassword(auth, email, senha);
       navigate("/principal");
